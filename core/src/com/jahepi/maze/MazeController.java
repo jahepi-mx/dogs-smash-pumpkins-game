@@ -50,11 +50,13 @@ public class MazeController implements Disposable, ContactListener {
 	private float startRoundSecs;
 	private float heroDeadTime;
 	private boolean loadNextLevel;
+	private Resource resource;
 	
-	public MazeController(EventListener listener) {
+	public MazeController(EventListener listener, Resource resource) {
 		level = new Level();
 		this.listener = listener;
 		cameraHelper = new CameraHelper();
+		this.resource = resource;
 	}
 	
 	public void start() {
@@ -133,7 +135,7 @@ public class MazeController implements Disposable, ContactListener {
 			}
 			for (int i = 0; i < numberOfEnemies; i++) {
 				Vector2 vector = spawnPoints.get(MathUtils.random(spawnPoints.size - 1));
-				Enemy enemy = new Enemy(world, vector.x , vector.y);
+				Enemy enemy = new Enemy(world, vector.x , vector.y, resource);
 				enemies.add(enemy);
 			}
 			onKillEnemiesFlag = false;
@@ -222,36 +224,36 @@ public class MazeController implements Disposable, ContactListener {
 			mirrorY--;
 			for (int x = 0; x < data[y].length; x++) {
 				if (data[y][x] instanceof Level.Crate) {
-					Crate block = new Crate(world, x , mirrorY, 1.5f, BodyType.DynamicBody);
+					Crate block = new Crate(world, x , mirrorY, 1.5f, BodyType.DynamicBody, resource);
 					gravityBlocks.add(block);
 				} else if (data[y][x] instanceof Level.StaticCrate) {
-					Crate block = new Crate(world, x , mirrorY, 1.5f, BodyType.StaticBody);
+					Crate block = new Crate(world, x , mirrorY, 1.5f, BodyType.StaticBody, resource);
 					blocks.add(block);
 				} else if (data[y][x] instanceof Level.Hero) {
-					hero = new Hero(world, x, mirrorY);
+					hero = new Hero(world, x, mirrorY, resource);
 					hero.setGravity(true);
 				} else if (data[y][x] instanceof Level.Mushroom) {
-					GravityItem item = new GravityItem(world, x, mirrorY);
+					GravityItem item = new GravityItem(world, x, mirrorY, resource);
 					gravityItems.add(item);
 				} else if (data[y][x] instanceof Level.Slope) {
 					Slope slope = new Slope(world, x , mirrorY, 2.0f, data[y][x].isFlipX());
-					slope.setTextureRegion(Resource.getInstance().getGameAtlas().findRegion(data[y][x].getImage()));
+					slope.setTextureRegion(resource.getGameAtlas().findRegion(data[y][x].getImage()));
 					blocks.add(slope);
 				} else if (data[y][x] instanceof Level.Door) {
 					Level.Door levelDoor = (Level.Door) data[y][x];
 					Door item = new Door(world, x , mirrorY, BodyType.StaticBody, 2.0f, levelDoor.isFlipX());
 					item.setGoTo(levelDoor.getGoTo().x, levelDoor.getGoTo().y);
-					item.setTextureRegion(Resource.getInstance().getGameAtlas().findRegion(levelDoor.getImage()));
+					item.setTextureRegion(resource.getGameAtlas().findRegion(levelDoor.getImage()));
 					blocks.add(item);
 				} else if(data[y][x] instanceof Level.Empty) {
 					spawnPoints.add(new Vector2(x, mirrorY));
 				} else if(data[y][x] instanceof Level.None) {
 					None none = new None(x , mirrorY, 2.0f, data[y][x].isFlipX());
-					none.setTextureRegion(Resource.getInstance().getGameAtlas().findRegion(data[y][x].getImage()));
+					none.setTextureRegion(resource.getGameAtlas().findRegion(data[y][x].getImage()));
 					blocks.add(none);
 				} else {
 					Block block = new Block(world, x , mirrorY, BodyType.StaticBody, 2.0f, data[y][x].isFlipX());
-					block.setTextureRegion(Resource.getInstance().getGameAtlas().findRegion(data[y][x].getImage()));
+					block.setTextureRegion(resource.getGameAtlas().findRegion(data[y][x].getImage()));
 					blocks.add(block);
 				}
 			}

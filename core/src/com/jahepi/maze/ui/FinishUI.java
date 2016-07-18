@@ -30,22 +30,24 @@ public class FinishUI implements Disposable {
 	private TextField textField;
 	private FinishUIListener listener;
 	private boolean sendingData;
+	private Resource resource;
 	
-	public FinishUI(FinishUIListener listenerParam) {
+	public FinishUI(FinishUIListener listenerParam, Resource resource) {
 		this.listener = listenerParam;
+		this.resource = resource;
 		LabelStyle style0 = new LabelStyle();
-		BitmapFont scoreFont = Resource.getInstance().getScoreFont();
+		BitmapFont scoreFont = resource.getScoreFont();
 		style0.font = scoreFont;
 		scoreLabel = new Label("", style0);
 		scoreLabel.setColor(Color.WHITE);
 		LabelStyle style1 = new LabelStyle();
-		BitmapFont uiFont = Resource.getInstance().getUIFont();
+		BitmapFont uiFont = resource.getUIFont();
 		style1.font = uiFont;
 		
 		Label labelMain = new Label("Go To Main", style1);
 		labelMain.setColor(Color.RED);
 		labelMain.setFontScale(2.0f);
-		Button goToMain = new Button(Resource.getInstance().getSkin());
+		Button goToMain = new Button(resource.getSkin());
 		goToMain.add(labelMain);
 		
 		goToMain.addListener(new ClickListener() {
@@ -58,7 +60,7 @@ public class FinishUI implements Disposable {
 		Label labelTry = new Label("Try Again", style1);
 		labelTry.setColor(Color.YELLOW);
 		labelTry.setFontScale(2.0f);
-		Button tryAgain = new Button(Resource.getInstance().getSkin());
+		Button tryAgain = new Button(resource.getSkin());
 		tryAgain.add(labelTry);
 		
 		tryAgain.addListener(new ClickListener() {
@@ -79,8 +81,8 @@ public class FinishUI implements Disposable {
 		statusLabel = new Label("", style1);
 		statusLabel.setColor(Color.RED);
 		
-		textField = new TextField("", Resource.getInstance().getSkin());
-		Button saveBtn = new Button(Resource.getInstance().getSkin());
+		textField = new TextField("", resource.getSkin());
+		Button saveBtn = new Button(resource.getSkin());
 		saveBtn.add(publishLabel);
 		saveBtn.addListener(new ClickListener() {
 			@Override

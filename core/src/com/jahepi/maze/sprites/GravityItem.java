@@ -15,11 +15,13 @@ public class GravityItem extends WorldObject {
 	private float spawnSecs;
 	private boolean visible;
 	private TextureRegion region;
+	private Resource resource;
 	
-	public GravityItem(World world, float x, float y) {
+	public GravityItem(World world, float x, float y, Resource resource) {
 		super(world, x, y, 1, 1, 0.9f, BodyType.StaticBody, true, false);
+		this.resource = resource;
 		visible = true;
-		region = new TextureRegion(Resource.getInstance().getGameAtlas().findRegion("mushroom2"));
+		region = new TextureRegion(this.resource.getGameAtlas().findRegion("mushroom2"));
 	}
 
 	public boolean isVisible() {
@@ -29,7 +31,7 @@ public class GravityItem extends WorldObject {
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 		if (!this.visible) {
-			Resource.getInstance().getMushroomSound().play();
+			resource.getMushroomSound().play();
 		}
 	}
 

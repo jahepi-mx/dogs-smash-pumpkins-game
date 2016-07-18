@@ -19,8 +19,6 @@ import com.badlogic.gdx.utils.Disposable;
 import com.jahepi.maze.utils.Constant;
 
 public class Resource implements Disposable {
-
-	private static Resource instance;	
 	
 	private Skin skin;
 	private AssetManager manager = new AssetManager();
@@ -54,7 +52,7 @@ public class Resource implements Disposable {
 	private Animation heroDeadAnimation;
 	private ShaderProgram monochromeShader;
 
-	private Resource() {
+	public Resource() {
 		
 		skin = new Skin(Gdx.files.internal(Constant.SKIN_PATH));
 		backgroundTexture = new Texture(Gdx.files.internal("BG.png"));
@@ -135,13 +133,6 @@ public class Resource implements Disposable {
 	    glyphLayout = new GlyphLayout();
 	    
 	    monochromeShader = new ShaderProgram(Gdx.files.internal("shader/monochrome.vs"), Gdx.files.internal("shader/monochrome.fs"));
-	}
-	
-	public static Resource getInstance() {
-		if (instance == null) {
-			instance = new Resource();
-		}
-		return instance;
 	}
 
 	public Skin getSkin() {

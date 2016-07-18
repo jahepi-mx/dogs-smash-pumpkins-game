@@ -37,14 +37,16 @@ public class Enemy extends WorldObject {
 	private int life;
 	private float blinkDead;
 	private float blinkDeadAlpha;
+	private Resource resource;
 	
 	private Animation runAnimation;
 	private Animation jumpAnimation;
 	private Animation walkAnimation;
 	private Animation deadAnimation;
 	
-	public Enemy(World world, float x, float y) {
+	public Enemy(World world, float x, float y, Resource resource) {
 		super(world, x, y, 1.5f, 1.5f, 0.8f, BodyType.DynamicBody, false, false);
+		this.resource = resource;
 		direction = new Vector2(MathUtils.randomSign(), 1);
 		this.velocity = MathUtils.random(MIN_VELOCITY, MAX_VELOCITY);
 		this.life = LIFE;
@@ -69,10 +71,10 @@ public class Enemy extends WorldObject {
 		body.createFixture(fix1).setUserData(new RightSideEnemy());
 		shape1.dispose();
 		
-		runAnimation = Resource.getInstance().getEnemyRunAnimation();
-		jumpAnimation = Resource.getInstance().getEnemyJumpAnimation();
-		walkAnimation = Resource.getInstance().getEnemyWalkAnimation();
-		deadAnimation = Resource.getInstance().getEnemyDeadAnimation();
+		runAnimation = this.resource.getEnemyRunAnimation();
+		jumpAnimation = this.resource.getEnemyJumpAnimation();
+		walkAnimation = this.resource.getEnemyWalkAnimation();
+		deadAnimation = this.resource.getEnemyDeadAnimation();
 		
 		blinkDeadAlpha = 1.0f;
 	}
@@ -181,9 +183,9 @@ public class Enemy extends WorldObject {
 			if (life <= 0) {
 				stateTime = 0;
 				this.isDead = true;
-				Resource.getInstance().getEnemyDieSound().play();
+				this.resource.getEnemyDieSound().play();
 			} else {
-				Resource.getInstance().getHitSound().play();
+				this.resource.getHitSound().play();
 			}
 			return true;
 		}

@@ -17,14 +17,16 @@ public class PlayScreen implements Screen, OnExitListener {
 	private MazeRender renderObj;
 	private Music playMusic;
 	private Music mainMusic;
+	private Resource resource;
 	
 	public PlayScreen(Maze mazeParam) {
 		maze = mazeParam;
+		resource = mazeParam.getResource();
 		StretchViewport viewport = new StretchViewport(Constant.UI_WIDTH, Constant.UI_HEIGHT);
 		stage = new Stage(viewport, maze.getBatch());
-		renderObj = new MazeRender(stage, this);
-		playMusic = Resource.getInstance().getPlayMusic();
-		mainMusic = Resource.getInstance().getMainMusic();
+		renderObj = new MazeRender(stage, this, resource);
+		playMusic = resource.getPlayMusic();
+		mainMusic = resource.getMainMusic();
 	}
 
 	@Override
@@ -77,4 +79,7 @@ public class PlayScreen implements Screen, OnExitListener {
 		maze.changeToMainScreen();
 	}
 
+	public Resource getResource() {
+		return resource;
+	}
 }

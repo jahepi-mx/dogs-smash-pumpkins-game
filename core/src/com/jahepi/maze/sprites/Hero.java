@@ -35,16 +35,18 @@ public class Hero extends WorldObject {
 	private boolean isMoving = false;
 	private Vector2 moveTo;
 	private boolean isDead;
+	private Resource resource;
 
-	public Hero(World world, float x, float y) {
+	public Hero(World world, float x, float y, Resource resource) {
 		super(world, x, y, 0.5f, 1, 0.7f, BodyType.DynamicBody, false, false);
+		this.resource = resource;
 		velocityX = 12.0f;
 		velocityY = 12.0f;
 		direction = new Vector2(0, 0);	
-		runAnimation = Resource.getInstance().getHeroRunAnimation();
-		jumpAnimation = Resource.getInstance().getHeroJumpAnimation();
-		idleAnimation = Resource.getInstance().getHeroIdleAnimation();
-		deadAnimation = Resource.getInstance().getHeroDeadAnimation();
+		runAnimation = this.resource.getHeroRunAnimation();
+		jumpAnimation = this.resource.getHeroJumpAnimation();
+		idleAnimation = this.resource.getHeroIdleAnimation();
+		deadAnimation = this.resource.getHeroDeadAnimation();
 		body.setFixedRotation(true);
 	}
 	
@@ -122,7 +124,7 @@ public class Hero extends WorldObject {
 		}
 		if (!isJumping()) {
 			isJumping = true;
-			Resource.getInstance().getJumpSound().play();
+			this.resource.getJumpSound().play();
 			body.applyLinearImpulse(new Vector2(0.0f, JUMP), body.getPosition(), true);
 		}
 	}
@@ -215,7 +217,7 @@ public class Hero extends WorldObject {
 			stateTime = 0;
 			this.isDead = true;
 			this.setGravity(true);
-			Resource.getInstance().getGameOverSound().play();
+			this.resource.getGameOverSound().play();
 		}
 	}
 	

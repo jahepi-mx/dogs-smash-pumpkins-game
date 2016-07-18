@@ -38,18 +38,19 @@ public class RankingScreen implements Screen, RankingListener {
 	private Table table;
 	private BitmapFont rankingFont;
 	private Label statusLabel;
+	private Resource resource;
 	
 	public RankingScreen(Maze mazeParam) {
 		maze = mazeParam;
-		
-		backgroundRegion = new TextureRegion(Resource.getInstance().getBackgroundTexture());
+		resource = mazeParam.getResource();
+		backgroundRegion = new TextureRegion(resource.getBackgroundTexture());
 		
 		batch = maze.getBatch();
 		StretchViewport viewport = new StretchViewport(Constant.UI_WIDTH, Constant.UI_HEIGHT);
 		stage = new Stage(viewport, batch);
 		
 		ranking = new Ranking(this);
-		rankingFont = Resource.getInstance().getUIFont();
+		rankingFont = resource.getUIFont();
 	}
 	
 	private void buildStage() {
@@ -62,7 +63,7 @@ public class RankingScreen implements Screen, RankingListener {
 		statusLabel.setPosition(Constant.UI_WIDTH / 2 - (statusLabel.getWidth() * statusLabel.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (statusLabel.getHeight() * statusLabel.getFontScaleY() / 2));
 		statusLabel.setAlignment(Align.center);
 		
-		TextureRegion region = Resource.getInstance().getGameAtlas().findRegion("home");
+		TextureRegion region = resource.getGameAtlas().findRegion("home");
 		exitBtn = new Button(new TextureRegionDrawable(region));
 		exitBtn.setPosition(-30, Constant.UI_HEIGHT - (exitBtn.getHeight() + 10));
 		exitBtn.setTransform(true);

@@ -40,18 +40,20 @@ public class MainScreen implements Screen {
 	private float scaleTime;
 	private GlyphLayout glyphLayout;
 	private Music mainMusic;
+	private Resource resource;
 	
 	public MainScreen(Maze mazeParam) {
 
 		maze = mazeParam;
-		
+		resource = mazeParam.getResource();
+
 		StretchViewport viewport = new StretchViewport(Constant.UI_WIDTH, Constant.UI_HEIGHT);
 		stage = new Stage(viewport, maze.getBatch());
 		
-		glyphLayout = Resource.getInstance().getGlyphLayout();
-		gameTitle = Resource.getInstance().getGameTitleFont();
-		mainMusic = Resource.getInstance().getMainMusic();
-		backgroundRegion = new TextureRegion(Resource.getInstance().getBackgroundTexture());
+		glyphLayout = resource.getGlyphLayout();
+		gameTitle = resource.getGameTitleFont();
+		mainMusic = resource.getMainMusic();
+		backgroundRegion = new TextureRegion(resource.getBackgroundTexture());
 		
 		scaleFrom = new Vector2(MIN_SCALE, 0);
 		scaleTo = new Vector2(MAX_SCALE, 0);
@@ -61,7 +63,7 @@ public class MainScreen implements Screen {
 	private void buildStage() {
 		
 		LabelStyle style = new LabelStyle();
-		BitmapFont start = Resource.getInstance().getUIFont();
+		BitmapFont start = resource.getUIFont();
 		style.font = start;
 		startBtn = new Label("Start", style);
 		startBtn.setFontScale(2.0f);
@@ -83,7 +85,7 @@ public class MainScreen implements Screen {
 		});
 		
 		LabelStyle style2 = new LabelStyle();
-		BitmapFont ranking = Resource.getInstance().getUIFont();
+		BitmapFont ranking = resource.getUIFont();
 		style2.font = ranking;
 		
 		rankingBtn = new Label("WorldWide Ranking", style2);

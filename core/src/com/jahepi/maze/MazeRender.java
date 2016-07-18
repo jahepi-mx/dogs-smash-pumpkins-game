@@ -69,19 +69,21 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 	private boolean isRight;
 	private boolean isUp;
 	private boolean isDown;
+	private Resource resource;
 	
-	public MazeRender(Stage stageParam, OnExitListener exitListenerParam) {
+	public MazeRender(Stage stageParam, OnExitListener exitListenerParam, Resource resource) {
 		stage = stageParam;
+		this.resource = resource;
 		batch = (SpriteBatch) stage.getBatch();
 		exitListener = exitListenerParam;
 		ranking = new Ranking(this);
-		backgroundRegion = new TextureRegion(Resource.getInstance().getBackgroundTexture());
-		startRoundFont = Resource.getInstance().getRoundFont();
-		monochromeShader = Resource.getInstance().getMonochromeShader();
-		glyphLayout = Resource.getInstance().getGlyphLayout();
-		controller = new MazeController(this);
-		fpsFont = Resource.getInstance().getFpsFont();
-		scoreEnemyFont = Resource.getInstance().getEnemyScoreFont();
+		backgroundRegion = new TextureRegion(resource.getBackgroundTexture());
+		startRoundFont = resource.getRoundFont();
+		monochromeShader = resource.getMonochromeShader();
+		glyphLayout = resource.getGlyphLayout();
+		controller = new MazeController(this, resource);
+		fpsFont = resource.getFpsFont();
+		scoreEnemyFont = resource.getEnemyScoreFont();
 		scoreEnemyFontPos = new Vector2(0, Constant.UI_HEIGHT);
 		
 		camera = new OrthographicCamera(Constant.WORLD_CAMERA_WIDTH, Constant.WORLD_CAMERA_HEIGHT);
@@ -92,7 +94,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 	
 	private void buildStage() {
 		scoreEnemyFontPos.y = Constant.UI_HEIGHT;
-		TextureRegion region = Resource.getInstance().getGameAtlas().findRegion("home");
+		TextureRegion region = resource.getGameAtlas().findRegion("home");
 		exitBtn = new Button(new TextureRegionDrawable(region));
 		exitBtn.setPosition(-30, Constant.UI_HEIGHT - (exitBtn.getHeight() + 10));
 		exitBtn.setTransform(true);
@@ -101,8 +103,8 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		exitBtn.setScale(0.4f);
 		stage.addActor(exitBtn);
 		
-		TextureRegion regionZoomIn = Resource.getInstance().getGameAtlas().findRegion("zoomin");
-		TextureRegion regionZoomInOver = Resource.getInstance().getGameAtlas().findRegion("zoominover");
+		TextureRegion regionZoomIn = resource.getGameAtlas().findRegion("zoomin");
+		TextureRegion regionZoomInOver = resource.getGameAtlas().findRegion("zoominover");
 		ButtonStyle style = new ButtonStyle();
 		style.up = new TextureRegionDrawable(regionZoomIn);
 		style.down = new TextureRegionDrawable(regionZoomInOver);
@@ -114,8 +116,8 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		zoomInBtn.setScale(0.4f);
 		stage.addActor(zoomInBtn);
 		
-		TextureRegion regionZoomOut = Resource.getInstance().getGameAtlas().findRegion("zoomout");
-		TextureRegion regionZoomOutOver = Resource.getInstance().getGameAtlas().findRegion("zoomoutover");
+		TextureRegion regionZoomOut = resource.getGameAtlas().findRegion("zoomout");
+		TextureRegion regionZoomOutOver = resource.getGameAtlas().findRegion("zoomoutover");
 		ButtonStyle style2 = new ButtonStyle();
 		style2.up = new TextureRegionDrawable(regionZoomOut);
 		style2.down = new TextureRegionDrawable(regionZoomOutOver);
@@ -127,8 +129,8 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		zoomOutBtn.setScale(0.4f);
 		stage.addActor(zoomOutBtn);
 		
-		TextureRegion regionArrow = Resource.getInstance().getGameAtlas().findRegion("arrow");
-		TextureRegion regionArrowOver = Resource.getInstance().getGameAtlas().findRegion("arrowover");
+		TextureRegion regionArrow = resource.getGameAtlas().findRegion("arrow");
+		TextureRegion regionArrowOver = resource.getGameAtlas().findRegion("arrowover");
 		ButtonStyle style3 = new ButtonStyle();
 		style3.up = new TextureRegionDrawable(regionArrow);
 		style3.down = new TextureRegionDrawable(regionArrowOver);
@@ -226,7 +228,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		});
 		
 		LabelStyle style4 = new LabelStyle();
-		style4.font = Resource.getInstance().getScoreFont();
+		style4.font = resource.getScoreFont();
 		scoreFontLabel = new Label("0", style4);	
 		scoreFontLabel.setPosition(Constant.UI_WIDTH - scoreFontLabel.getWidth() - 50.0f, Constant.UI_HEIGHT - scoreFontLabel.getHeight() - 40);
 		stage.addActor(scoreFontLabel);
@@ -265,7 +267,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 			}		
 		});
 		
-		finishUI = new FinishUI(this);
+		finishUI = new FinishUI(this, resource);
 		finishUI.setVisible(false);
 		stage.addActor(finishUI.getTable());
 	}

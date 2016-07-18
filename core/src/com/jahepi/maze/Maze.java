@@ -20,6 +20,7 @@ public class Maze extends Game {
 	private RankingScreen rankingScreen;
 	private Screen currentScreen;
 	private AdListener adListener;
+	private Resource resource;
 
 	public Maze(AdListener adListener) {
 		this.adListener = adListener;
@@ -27,6 +28,7 @@ public class Maze extends Game {
 	
 	@Override
 	public void create () {
+		resource = new Resource();
 		batch = new SpriteBatch();
 		mainScreen = new MainScreen(this);
 		playScreen = new PlayScreen(this);
@@ -38,7 +40,7 @@ public class Maze extends Game {
 	public void dispose() {
 		disposeLastScreen();
 		batch.dispose();
-		Resource.getInstance().dispose();
+		resource.dispose();
 	}
 
 	@Override
@@ -89,5 +91,9 @@ public class Maze extends Game {
 		if (currentScreen != null) {
 			currentScreen.dispose();
 		}
+	}
+
+	public Resource getResource() {
+		return resource;
 	}
 }

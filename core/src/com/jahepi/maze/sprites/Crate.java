@@ -6,10 +6,10 @@ import com.jahepi.maze.resources.Resource;
 
 public class Crate extends Block {
 
-	public Crate(World world, float x, float y, float size, BodyType type) {
+	public Crate(World world, float x, float y, float size, BodyType type, Resource resource) {
 		super(world, x, y, type, size, false);
 		this.setGravity(false);
-		this.setTextureRegion(Resource.getInstance().getGameAtlas().findRegion("crate"));
+		this.setTextureRegion(resource.getGameAtlas().findRegion("crate"));
 	}
 
 }
