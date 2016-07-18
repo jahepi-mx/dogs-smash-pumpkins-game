@@ -3,6 +3,7 @@ package com.jahepi.maze;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.jahepi.maze.ads.AdListener;
 import com.jahepi.maze.resources.Resource;
 import com.jahepi.maze.screens.MainScreen;
 import com.jahepi.maze.screens.PlayScreen;
@@ -18,6 +19,11 @@ public class Maze extends Game {
 	private PlayScreen playScreen;
 	private RankingScreen rankingScreen;
 	private Screen currentScreen;
+	private AdListener adListener;
+
+	public Maze(AdListener adListener) {
+		this.adListener = adListener;
+	}
 	
 	@Override
 	public void create () {
@@ -59,18 +65,21 @@ public class Maze extends Game {
 	}
 	
 	public void changeToMainScreen() {
+		this.adListener.show(true);
 		this.setScreen(mainScreen);
 		disposeLastScreen();
 		currentScreen = mainScreen;
 	}
 	
 	public void changeToPlayScreen() {
+		this.adListener.show(true);
 		this.setScreen(playScreen);
 		disposeLastScreen();
 		currentScreen = playScreen;
 	}
 	
 	public void changeToRankingScreen() {
+		this.adListener.show(true);
 		this.setScreen(rankingScreen);
 		disposeLastScreen();
 		currentScreen = rankingScreen;
