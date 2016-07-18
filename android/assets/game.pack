@@ -1,0 +1,207 @@
+game.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mushroom1
+  rotate: false
+  xy: 4, 4
+  size: 49, 41
+  orig: 49, 41
+  offset: 0, 0
+  index: -1
+mushroom2
+  rotate: false
+  xy: 59, 4
+  size: 50, 41
+  orig: 50, 41
+  offset: 0, 0
+  index: -1
+sign
+  rotate: false
+  xy: 115, 4
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: -1
+crate
+  rotate: false
+  xy: 183, 4
+  size: 77, 77
+  orig: 77, 77
+  offset: 0, 0
+  index: -1
+sand7
+  rotate: false
+  xy: 266, 4
+  size: 128, 93
+  orig: 128, 93
+  offset: 0, 0
+  index: -1
+sand8
+  rotate: false
+  xy: 400, 4
+  size: 128, 93
+  orig: 128, 93
+  offset: 0, 0
+  index: -1
+sand3
+  rotate: false
+  xy: 534, 4
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sand2
+  rotate: false
+  xy: 668, 4
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sand5
+  rotate: false
+  xy: 802, 4
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sand9
+  rotate: false
+  xy: 4, 138
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sand6
+  rotate: false
+  xy: 138, 138
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sand11
+  rotate: false
+  xy: 272, 138
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sand12
+  rotate: false
+  xy: 406, 138
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sand10
+  rotate: false
+  xy: 540, 138
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sand1
+  rotate: false
+  xy: 674, 138
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sand4
+  rotate: false
+  xy: 808, 138
+  size: 129, 129
+  orig: 129, 129
+  offset: 0, 0
+  index: -1
+zoomin
+  rotate: false
+  xy: 4, 273
+  size: 182, 190
+  orig: 182, 190
+  offset: 0, 0
+  index: -1
+zoominover
+  rotate: false
+  xy: 192, 273
+  size: 182, 190
+  orig: 182, 190
+  offset: 0, 0
+  index: -1
+soundover
+  rotate: false
+  xy: 380, 273
+  size: 182, 190
+  orig: 182, 190
+  offset: 0, 0
+  index: -1
+zoomout
+  rotate: false
+  xy: 568, 273
+  size: 182, 191
+  orig: 182, 191
+  offset: 0, 0
+  index: -1
+win
+  rotate: false
+  xy: 756, 273
+  size: 182, 191
+  orig: 182, 191
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: false
+  xy: 4, 470
+  size: 182, 191
+  orig: 182, 191
+  offset: 0, 0
+  index: -1
+arrowover
+  rotate: false
+  xy: 192, 470
+  size: 182, 191
+  orig: 182, 191
+  offset: 0, 0
+  index: -1
+home
+  rotate: false
+  xy: 380, 470
+  size: 182, 191
+  orig: 182, 191
+  offset: 0, 0
+  index: -1
+sound
+  rotate: false
+  xy: 568, 470
+  size: 183, 190
+  orig: 183, 190
+  offset: 0, 0
+  index: -1
+play
+  rotate: false
+  xy: 757, 470
+  size: 182, 191
+  orig: 182, 191
+  offset: 0, 0
+  index: -1
+playover
+  rotate: false
+  xy: 4, 667
+  size: 182, 191
+  orig: 182, 191
+  offset: 0, 0
+  index: -1
+zoomoutover
+  rotate: false
+  xy: 192, 667
+  size: 182, 191
+  orig: 182, 191
+  offset: 0, 0
+  index: -1
+title
+  rotate: false
+  xy: 380, 667
+  size: 627, 107
+  orig: 640, 134
+  offset: 9, 12
+  index: -1
