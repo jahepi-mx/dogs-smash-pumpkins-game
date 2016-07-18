@@ -29,6 +29,7 @@ public class MainScreen implements Screen {
 	private Maze maze;
 	private Label startBtn;
 	private Label rankingBtn;
+	private Label exiBtn;
 	private Stage stage;
 	private TextureRegion backgroundRegion;
 	private Vector2 scaleFrom;
@@ -89,7 +90,7 @@ public class MainScreen implements Screen {
 		rankingBtn.setFontScale(2.0f);
 		rankingBtn.setColor(Color.WHITE);
 		rankingBtn.scaleBy(2.0f);
-		rankingBtn.setPosition(Constant.UI_WIDTH / 2 - (rankingBtn.getWidth() * rankingBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (rankingBtn.getHeight() * rankingBtn.getFontScaleY() * 3));
+		rankingBtn.setPosition(Constant.UI_WIDTH / 2 - (rankingBtn.getWidth() * rankingBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (rankingBtn.getHeight() * rankingBtn.getFontScaleY() * 2.3f));
 		rankingBtn.setOriginX(rankingBtn.getWidth() / 2);
 		rankingBtn.setOriginY(rankingBtn.getHeight() / 2);
 		this.stage.addActor(rankingBtn);
@@ -101,6 +102,24 @@ public class MainScreen implements Screen {
 				maze.changeToRankingScreen();
 			}
 			
+		});
+
+		exiBtn = new Label("Exit", style2);
+		exiBtn.setFontScale(2.0f);
+		exiBtn.setColor(Color.WHITE);
+		exiBtn.scaleBy(2.0f);
+		exiBtn.setPosition(Constant.UI_WIDTH / 2 - (exiBtn.getWidth() * exiBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (exiBtn.getHeight() * exiBtn.getFontScaleY() * 4));
+		exiBtn.setOriginX(exiBtn.getWidth() / 2);
+		exiBtn.setOriginY(exiBtn.getHeight() / 2);
+		this.stage.addActor(exiBtn);
+
+		exiBtn.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.exit();
+			}
+
 		});
 	}
 
@@ -170,5 +189,6 @@ public class MainScreen implements Screen {
 		stage.dispose();
 		startBtn = null;
 		rankingBtn = null;
+		exiBtn = null;
 	}
 }

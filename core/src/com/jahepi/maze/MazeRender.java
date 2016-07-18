@@ -94,7 +94,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		scoreEnemyFontPos.y = Constant.UI_HEIGHT;
 		TextureRegion region = Resource.getInstance().getGameAtlas().findRegion("home");
 		exitBtn = new Button(new TextureRegionDrawable(region));
-		exitBtn.setPosition(-30, Constant.UI_HEIGHT - (exitBtn.getHeight() - 40));
+		exitBtn.setPosition(-30, Constant.UI_HEIGHT - (exitBtn.getHeight() + 10));
 		exitBtn.setTransform(true);
 		exitBtn.setOriginX(exitBtn.getWidth() / 2);
 		exitBtn.setOriginY(exitBtn.getHeight() / 2);
@@ -107,7 +107,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		style.up = new TextureRegionDrawable(regionZoomIn);
 		style.down = new TextureRegionDrawable(regionZoomInOver);
 		zoomInBtn = new Button(style);
-		zoomInBtn.setPosition(60, Constant.UI_HEIGHT - (exitBtn.getHeight() - 40));
+		zoomInBtn.setPosition(60, Constant.UI_HEIGHT - (exitBtn.getHeight() + 10));
 		zoomInBtn.setTransform(true);
 		zoomInBtn.setOriginX(zoomInBtn.getWidth() / 2);
 		zoomInBtn.setOriginY(zoomInBtn.getHeight() / 2);
@@ -120,7 +120,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		style2.up = new TextureRegionDrawable(regionZoomOut);
 		style2.down = new TextureRegionDrawable(regionZoomOutOver);
 		zoomOutBtn = new Button(style2);
-		zoomOutBtn.setPosition(150, Constant.UI_HEIGHT - (exitBtn.getHeight() - 40));
+		zoomOutBtn.setPosition(150, Constant.UI_HEIGHT - (exitBtn.getHeight() + 10));
 		zoomOutBtn.setTransform(true);
 		zoomOutBtn.setOriginX(zoomOutBtn.getWidth() / 2);
 		zoomOutBtn.setOriginY(zoomOutBtn.getHeight() / 2);
@@ -228,7 +228,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		LabelStyle style4 = new LabelStyle();
 		style4.font = Resource.getInstance().getScoreFont();
 		scoreFontLabel = new Label("0", style4);	
-		scoreFontLabel.setPosition(Constant.UI_WIDTH - scoreFontLabel.getWidth() - 50.0f, Constant.UI_HEIGHT - scoreFontLabel.getHeight());
+		scoreFontLabel.setPosition(Constant.UI_WIDTH - scoreFontLabel.getWidth() - 50.0f, Constant.UI_HEIGHT - scoreFontLabel.getHeight() - 40);
 		stage.addActor(scoreFontLabel);
 		
 		stage.addListener(new InputListener() {

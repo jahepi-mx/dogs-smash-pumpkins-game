@@ -1,5 +1,7 @@
 package com.jahepi.maze.ui;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -63,7 +65,7 @@ public class FinishUI implements Disposable {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				listener.onTryAgain();
-			}			
+			}
 		});
 		
 		Label myName = new Label("Nickname:", style1);
@@ -92,6 +94,23 @@ public class FinishUI implements Disposable {
 					listener.onSendScoreWorldWide(getName(), score);
 				}
 			}			
+		});
+
+		textField.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.input.getTextInput(new Input.TextInputListener() {
+					@Override
+					public void input(String text) {
+						textField.setText(text);
+					}
+
+					@Override
+					public void canceled() {
+
+					}
+				}, "Set your name to publish", "", "");
+			}
 		});
 		
 		table = new Table();
@@ -133,6 +152,7 @@ public class FinishUI implements Disposable {
 	public void reset() {
 		sendingData = false;
 		statusLabel.setText("");
+		textField.setText("");
 		setVisible(false);
 	}
 	

@@ -64,7 +64,7 @@ public class RankingScreen implements Screen, RankingListener {
 		
 		TextureRegion region = Resource.getInstance().getGameAtlas().findRegion("home");
 		exitBtn = new Button(new TextureRegionDrawable(region));
-		exitBtn.setPosition(-30, Constant.UI_HEIGHT - (exitBtn.getHeight() - 40));
+		exitBtn.setPosition(-30, Constant.UI_HEIGHT - (exitBtn.getHeight() + 10));
 		exitBtn.setTransform(true);
 		exitBtn.setOriginX(exitBtn.getWidth() / 2);
 		exitBtn.setOriginY(exitBtn.getHeight() / 2);
