@@ -79,6 +79,7 @@ public class FinishUI implements Disposable {
 		publishLabel.setColor(Color.WHITE);
 		
 		statusLabel = new Label("", style1);
+		statusLabel.setFontScale(2.0f);
 		statusLabel.setColor(Color.RED);
 		
 		textField = new TextField("", resource.getSkin());
@@ -89,13 +90,13 @@ public class FinishUI implements Disposable {
 			public void clicked(InputEvent event, float x, float y) {
 				if (!sendingData) {
 					if (getName().equals("")) {
-						setStatus("The name is required!");
+						setStatus("The name is required!", Color.RED);
 						return;
 					}
 					sendingData = true;
 					listener.onSendScoreWorldWide(getName(), score);
 				}
-			}			
+			}
 		});
 
 		textField.addListener(new ClickListener() {
@@ -158,7 +159,8 @@ public class FinishUI implements Disposable {
 		setVisible(false);
 	}
 	
-	public void setStatus(String status) {
+	public void setStatus(String status, Color color) {
+		this.statusLabel.setColor(color);
 		this.statusLabel.setText(status);
 	}
 

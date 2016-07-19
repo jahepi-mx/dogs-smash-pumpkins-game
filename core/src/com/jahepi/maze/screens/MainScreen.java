@@ -30,6 +30,7 @@ public class MainScreen implements Screen {
 	private Label startBtn;
 	private Label rankingBtn;
 	private Label exiBtn;
+	private Label creditsLabel;
 	private Stage stage;
 	private TextureRegion backgroundRegion;
 	private Vector2 scaleFrom;
@@ -92,7 +93,7 @@ public class MainScreen implements Screen {
 		rankingBtn.setFontScale(2.0f);
 		rankingBtn.setColor(Color.WHITE);
 		rankingBtn.scaleBy(2.0f);
-		rankingBtn.setPosition(Constant.UI_WIDTH / 2 - (rankingBtn.getWidth() * rankingBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (rankingBtn.getHeight() * rankingBtn.getFontScaleY() * 2.3f));
+		rankingBtn.setPosition(Constant.UI_WIDTH / 2 - (rankingBtn.getWidth() * rankingBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (rankingBtn.getHeight() * rankingBtn.getFontScaleY() * 2.0f));
 		rankingBtn.setOriginX(rankingBtn.getWidth() / 2);
 		rankingBtn.setOriginY(rankingBtn.getHeight() / 2);
 		this.stage.addActor(rankingBtn);
@@ -110,7 +111,7 @@ public class MainScreen implements Screen {
 		exiBtn.setFontScale(2.0f);
 		exiBtn.setColor(Color.WHITE);
 		exiBtn.scaleBy(2.0f);
-		exiBtn.setPosition(Constant.UI_WIDTH / 2 - (exiBtn.getWidth() * exiBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (exiBtn.getHeight() * exiBtn.getFontScaleY() * 4));
+		exiBtn.setPosition(Constant.UI_WIDTH / 2 - (exiBtn.getWidth() * exiBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (exiBtn.getHeight() * exiBtn.getFontScaleY() * 3.4f));
 		exiBtn.setOriginX(exiBtn.getWidth() / 2);
 		exiBtn.setOriginY(exiBtn.getHeight() / 2);
 		this.stage.addActor(exiBtn);
@@ -123,6 +124,15 @@ public class MainScreen implements Screen {
 			}
 
 		});
+
+		creditsLabel = new Label("Game Sprites www.gameart2d.com \n Music & Sound http://opengameart.org", style2);
+		creditsLabel.setFontScale(1.2f);
+		creditsLabel.setColor(Color.GOLD);
+		creditsLabel.scaleBy(1.2f);
+		creditsLabel.setPosition(Constant.UI_WIDTH / 2 - (creditsLabel.getWidth() * creditsLabel.getFontScaleX() / 2), 10);
+		creditsLabel.setOriginX(creditsLabel.getWidth() / 2);
+		creditsLabel.setOriginY(creditsLabel.getHeight() / 2);
+		this.stage.addActor(creditsLabel);
 	}
 
 	@Override
@@ -140,7 +150,7 @@ public class MainScreen implements Screen {
 		blinkStartTime += delta;
 		scaleTime += delta;
 		
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		scaleFrom.lerp(scaleTo, delta);

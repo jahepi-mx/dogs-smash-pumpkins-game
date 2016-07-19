@@ -2,6 +2,7 @@ package com.jahepi.maze;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -368,9 +369,11 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		batch.setProjectionMatrix(cameraGUI.combined);
 		cameraGUI.update();
 		batch.begin();
-		
-		glyphLayout.setText(fpsFont, "Fps: " + Gdx.graphics.getFramesPerSecond());
-		fpsFont.draw(batch, glyphLayout, Constant.UI_WIDTH - glyphLayout.width - margin, margin);
+
+		if (Constant.SHOW_FPS) {
+			glyphLayout.setText(fpsFont, "Fps: " + Gdx.graphics.getFramesPerSecond());
+			fpsFont.draw(batch, glyphLayout, Constant.UI_WIDTH - glyphLayout.width - margin, margin);
+		}
 		
 		if (scorePointTime > 0) {
 			scorePointTime -= deltatime;
@@ -459,7 +462,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 	@Override
 	public void onSaveRanking() {
 		if (finishUI != null) {
-			finishUI.setStatus("Your score was published successfully!");
+			finishUI.setStatus("Your score was \npublished successfully!", Color.GREEN);
 		}
 	}
 
@@ -472,7 +475,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 	public void onErrorSaveRanking() {
 		if (finishUI != null) {
 			finishUI.setSendingData(false);
-			finishUI.setStatus("Your score could not be published, verify your internet connection!");
+			finishUI.setStatus("Your score could not \nbe published!", Color.RED);
 		}
 	}
 
