@@ -17,14 +17,14 @@ public class Hero extends WorldObject {
 
 	private static final float IMMUNITY_SECONDS = 1.0f;
 	private static final float INACTIVE_SECONDS = 1.0f;
-	private final static float JUMP = 60.0f;
+	private final static float JUMP = 65.0f;
 	private final static float SECONDS_TO_CHANGE_GRAVITY = 3.0f;
 	private float delayChangeGravity = SECONDS_TO_CHANGE_GRAVITY;
 	
 	private Vector2 direction;
 	private float velocityX;
 	private float velocityY;
-	private boolean isJumping;
+	private boolean isJumping, jumpFlag;
 	private Animation runAnimation;
 	private Animation jumpAnimation;
 	private Animation idleAnimation;
@@ -100,6 +100,12 @@ public class Hero extends WorldObject {
 		if (checkMoveTo() || isDead) {
 			return;
 		}
+
+		if (jumpFlag) {
+			jumpFlag = false;
+			jump();
+		}
+
 		direction.x *= friction;
 		float x = body.getPosition().x + (direction.x * deltatime);
 		float y = body.getPosition().y;
@@ -235,5 +241,13 @@ public class Hero extends WorldObject {
 	
 	public class JumpSensor {
 		
+	}
+
+	public boolean isJumpFlag() {
+		return jumpFlag;
+	}
+
+	public void setJumpFlag(boolean jumpFlag) {
+		this.jumpFlag = jumpFlag;
 	}
 }

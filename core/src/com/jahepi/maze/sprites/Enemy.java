@@ -31,7 +31,7 @@ public class Enemy extends WorldObject {
 	private float jumpSecs = 1.0f;
 	private float destroySecs = 0f;
 	private float teleportSecs = 0f;
-	private boolean isJumping;
+	private boolean isJumping, jumpFlag;
 	private float stateTime;
 	private boolean isDead;
 	private int life;
@@ -91,6 +91,11 @@ public class Enemy extends WorldObject {
 	public void render(SpriteBatch batch, float deltatime) {
 		teleportSecs += deltatime;
 		stateTime += deltatime;
+
+		if (jumpFlag) {
+			jumpFlag = false;
+			jump();
+		}
 		
 		if (checkMoveTo()) {
 			return;
@@ -214,5 +219,13 @@ public class Enemy extends WorldObject {
 	
 	public class RightSideEnemy {
 		
+	}
+
+	public boolean isJumpFlag() {
+		return jumpFlag;
+	}
+
+	public void setJumpFlag(boolean jumpFlag) {
+		this.jumpFlag = jumpFlag;
 	}
 }

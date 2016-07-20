@@ -227,7 +227,7 @@ public class MazeController implements Disposable, ContactListener {
 					Crate block = new Crate(world, x , mirrorY, 1.5f, BodyType.DynamicBody, resource);
 					gravityBlocks.add(block);
 				} else if (data[y][x] instanceof Level.StaticCrate) {
-					Crate block = new Crate(world, x , mirrorY, 1.5f, BodyType.StaticBody, resource);
+					Crate block = new Crate(world, x , mirrorY, 2.0f, BodyType.StaticBody, resource);
 					blocks.add(block);
 				} else if (data[y][x] instanceof Level.Hero) {
 					hero = new Hero(world, x, mirrorY, resource);
@@ -298,7 +298,7 @@ public class MazeController implements Disposable, ContactListener {
 					score++;
 					this.listener.onPoint();
 					hero.resetImmunityTime();
-					hero.jump();
+					hero.setJumpFlag(true);
 				}
 			}
 			if (fixtureB.getBody().getUserData() instanceof Enemy) {
@@ -307,7 +307,7 @@ public class MazeController implements Disposable, ContactListener {
 					score++;
 					this.listener.onPoint();
 					hero.resetImmunityTime();
-					hero.jump();
+					hero.setJumpFlag(true);
 				}
 			}
 		}
@@ -416,7 +416,7 @@ public class MazeController implements Disposable, ContactListener {
 	
 	private boolean checkCrateCollision(Enemy enemy, Fixture fixture) {
 		if (fixture.getBody().getUserData() instanceof Crate) {
-			enemy.jump();
+			enemy.setJumpFlag(true);
 			return true;
 		}
 		return false;
