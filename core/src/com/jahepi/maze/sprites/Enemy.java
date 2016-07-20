@@ -155,7 +155,7 @@ public class Enemy extends WorldObject {
 		if (jumpSecs >= 1.0f) {
 			jumpSecs = 0;
 			isJumping = true;
-			body.applyLinearImpulse(new Vector2(0.01f, 100f), body.getPosition(), true);
+			body.applyLinearImpulse(new Vector2(0.01f, 107f), body.getPosition(), true);
 		}
 	}
 	

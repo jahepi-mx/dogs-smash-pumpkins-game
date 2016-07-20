@@ -88,14 +88,7 @@ public class FinishUI implements Disposable {
 		saveBtn.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				if (!sendingData) {
-					if (getName().equals("")) {
-						setStatus("The name is required!", Color.RED);
-						return;
-					}
-					sendingData = true;
-					listener.onSendScoreWorldWide(getName(), score);
-				}
+				publishScore();
 			}
 		});
 
@@ -106,6 +99,7 @@ public class FinishUI implements Disposable {
 					@Override
 					public void input(String text) {
 						textField.setText(text);
+						publishScore();
 					}
 
 					@Override
@@ -134,6 +128,16 @@ public class FinishUI implements Disposable {
 		table.setPosition(Constant.UI_WIDTH / 2 - (table.getWidth() / 2), Constant.UI_HEIGHT / 2 - (table.getHeight() / 2));
 	}
 
+	private void publishScore() {
+		if (!sendingData) {
+			if (getName().equals("")) {
+				setStatus("The name is required!", Color.RED);
+				return;
+			}
+			sendingData = true;
+			listener.onSendScoreWorldWide(getName(), score);
+		}
+	}
 
 	public void setScore(int score) {
 		this.score = score;
