@@ -1,5 +1,6 @@
 package com.jahepi.maze.sprites;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,8 +19,8 @@ public class Hero extends WorldObject {
 	private static final float IMMUNITY_SECONDS = 1.0f;
 	private static final float INACTIVE_SECONDS = 1.0f;
 	private final static float JUMP = 65.0f;
-	private final static float SECONDS_TO_CHANGE_GRAVITY = 3.0f;
-	private float delayChangeGravity = SECONDS_TO_CHANGE_GRAVITY;
+	private final static float SECONDS_TO_CHANGE_GOD_MODE = 6.0f;
+	private float delayChangeGodMode = SECONDS_TO_CHANGE_GOD_MODE;
 	
 	private Vector2 direction;
 	private float velocityX;
@@ -32,9 +33,10 @@ public class Hero extends WorldObject {
 	private float stateTime;
 	private float immunityTime;
 	private float teleportSecs = 0f;
+	private float godModeSecs = 0f;
 	private boolean isMoving = false;
 	private Vector2 moveTo;
-	private boolean isDead;
+	private boolean isDead, isGodMode;
 	private Resource resource;
 
 	public Hero(World world, float x, float y, Resource resource) {
@@ -110,9 +112,9 @@ public class Hero extends WorldObject {
 		float x = body.getPosition().x + (direction.x * deltatime);
 		float y = body.getPosition().y;
 		body.setTransform(x, y, 0);
-		delayChangeGravity = MathUtils.clamp(delayChangeGravity - deltatime, 0, SECONDS_TO_CHANGE_GRAVITY);
-		if (delayChangeGravity <= 0) {
-			setGravity(true);
+		delayChangeGodMode = MathUtils.clamp(delayChangeGodMode - deltatime, 0, SECONDS_TO_CHANGE_GOD_MODE);
+		if (delayChangeGodMode <= 0) {
+			isGodMode = false;
 		}
 	}
 	
@@ -135,16 +137,13 @@ public class Hero extends WorldObject {
 		}
 	}
 
-	@Override
-	public void setGravity(boolean active) {
-		super.setGravity(active);
-		if (!active) {
-			delayChangeGravity = SECONDS_TO_CHANGE_GRAVITY;
-		}
+	public void setGodMode() {
+		isGodMode = true;
+		delayChangeGodMode = SECONDS_TO_CHANGE_GOD_MODE;
 	}
 
-	public double getDelayChangeGravity() {
-		return Math.floor(delayChangeGravity * 10.00f / 10.00f);
+	public boolean isGodMode() {
+		return isGodMode;
 	}
 
 	@Override
@@ -152,6 +151,7 @@ public class Hero extends WorldObject {
 		stateTime += deltatime;
 		teleportSecs += deltatime;
 		immunityTime += deltatime;
+		godModeSecs += deltatime;
 		if (checkMoveTo()) {
 			return;
 		}
@@ -178,7 +178,19 @@ public class Hero extends WorldObject {
 		float width = (size.x + 0.5f) * factor * flip;
 		float height = size.y * factor;
 		float scale = 0.9f;
+
+		Color color = batch.getColor();
+		if (isGodMode) {
+			if (godModeSecs < 0.1f) {
+				batch.setColor(Color.RED);
+			} else if (godModeSecs >= 0.1f && godModeSecs <= 0.2f)  {
+				batch.setColor(color);
+			} else {
+				godModeSecs = 0;
+			}
+		}
 		batch.draw(region, x, y, origX, origY, width, height, scale, scale, rotation);
+		batch.setColor(color);
 	}
 
 	public boolean isMoving() {
@@ -222,7 +234,6 @@ public class Hero extends WorldObject {
 		if (!isDead) {
 			stateTime = 0;
 			this.isDead = true;
-			this.setGravity(true);
 			this.resource.getGameOverSound().play();
 		}
 	}
@@ -232,7 +243,7 @@ public class Hero extends WorldObject {
 	}
 	
 	public boolean isActive() {
-		return teleportSecs > INACTIVE_SECONDS && immunityTime > IMMUNITY_SECONDS;
+		return teleportSecs > INACTIVE_SECONDS && immunityTime > IMMUNITY_SECONDS && !isGodMode;
 	}
 	
 	public void resetImmunityTime() {

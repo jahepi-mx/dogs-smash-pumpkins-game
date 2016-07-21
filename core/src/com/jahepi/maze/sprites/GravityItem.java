@@ -10,7 +10,7 @@ import com.jahepi.maze.utils.Box2DUtils;
 
 public class GravityItem extends WorldObject {
 
-	private static final float SPAWN_TIME = 10.0f;
+	private static final float SPAWN_TIME = 20.0f;
 	
 	private float spawnSecs;
 	private boolean visible;

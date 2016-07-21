@@ -351,7 +351,7 @@ public class MazeController implements Disposable, ContactListener {
 			GravityItem item = (GravityItem) fixtureA.getBody().getUserData();
 			if (item.isVisible()) {
 				item.setVisible(false);
-				hero.setGravity(false);
+				hero.setGodMode();
 			}
 		}
 		if (fixtureB.getBody().getUserData() instanceof GravityItem
@@ -359,7 +359,7 @@ public class MazeController implements Disposable, ContactListener {
 			GravityItem item = (GravityItem) fixtureB.getBody().getUserData();
 			if (item.isVisible()) {
 				item.setVisible(false);
-				hero.setGravity(false);
+				hero.setGodMode();
 			}
 		}
 		
@@ -404,7 +404,6 @@ public class MazeController implements Disposable, ContactListener {
 			if (fixtureB.getBody().getUserData() instanceof Enemy) {
 				Enemy enemy = (Enemy) fixtureB.getBody().getUserData();
 				enemy.moveTo(to);
-				//enemy.changeDirection();
 			}
 		}
 		
@@ -417,7 +416,6 @@ public class MazeController implements Disposable, ContactListener {
 			if (fixtureA.getBody().getUserData() instanceof Enemy) {
 				Enemy enemy = (Enemy) fixtureA.getBody().getUserData();
 				enemy.moveTo(to);
-				//enemy.changeDirection();
 			}
 		}
 	}
@@ -437,10 +435,6 @@ public class MazeController implements Disposable, ContactListener {
 	@Override
 	public void preSolve(Contact contact, Manifold oldManifold) {
 	}
-	
-	public double getDelayChangeGravity() {
-		return hero.getDelayChangeGravity();
-	}
 
 	@Override
 	public void postSolve(Contact contact, ContactImpulse impulse) {
@@ -452,6 +446,10 @@ public class MazeController implements Disposable, ContactListener {
 	
 	public boolean isHeroDead() {
 		return hero.isDead();
+	}
+
+	public boolean isGodMode() {
+		return hero.isGodMode();
 	}
 	
 	public Array<GravityItem> getGravityItems() {

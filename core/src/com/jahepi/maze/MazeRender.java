@@ -53,8 +53,9 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 	private Button arrowLeftBtn;
 	private Button arrowRightBtn;
 	private Button arrowUpBtn;
-	private Button arrowDownBtn;
+	//private Button arrowDownBtn;
 	private Label scoreFontLabel;
+	private Label godModeFontLabel;
 	private OnExitListener exitListener;
 	private TextureRegion backgroundRegion;
 	private BitmapFont startRoundFont;
@@ -183,7 +184,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		});
 		
 		arrowUpBtn = new Button(style3);
-		arrowUpBtn.setPosition(Constant.UI_WIDTH - 275, -10);
+		arrowUpBtn.setPosition(Constant.UI_WIDTH - 155, -10);
 		arrowUpBtn.setTransform(true);
 		arrowUpBtn.setOriginX(arrowUpBtn.getWidth() / 2);
 		arrowUpBtn.setOriginY(arrowUpBtn.getHeight() / 2);
@@ -204,7 +205,8 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 				isUp = false;
 			}			
 		});
-		
+
+		/*
 		arrowDownBtn = new Button(style3);
 		arrowDownBtn.setPosition(Constant.UI_WIDTH - 155, -10);
 		arrowDownBtn.setTransform(true);
@@ -227,12 +229,19 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 				isDown = false;
 			}			
 		});
-		
+		*/
+
 		LabelStyle style4 = new LabelStyle();
 		style4.font = resource.getScoreFont();
 		scoreFontLabel = new Label("0", style4);	
 		scoreFontLabel.setPosition(Constant.UI_WIDTH - scoreFontLabel.getWidth() - 50.0f, Constant.UI_HEIGHT - scoreFontLabel.getHeight() - 40);
 		stage.addActor(scoreFontLabel);
+
+		LabelStyle style5 = new LabelStyle();
+		style5.font = resource.getFpsFont();
+		godModeFontLabel = new Label("GOD MODE ON!", style5);
+		godModeFontLabel.setPosition((Constant.UI_WIDTH / 2) - (godModeFontLabel.getWidth() / 2), Constant.UI_HEIGHT - godModeFontLabel.getHeight() - 160);
+		stage.addActor(godModeFontLabel);
 		
 		stage.addListener(new InputListener() {
 			@Override
@@ -292,11 +301,14 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		updateCamera();
 		
 		batch.begin();
+
+		godModeFontLabel.setVisible(controller.isGodMode());
+
 		if (controller.isHeroDead()) {
 			if (controller.getHeroDeadTime() >= SECONDS_SHOW_DEAD_SCREEN) {
 				batch.setShader(monochromeShader);
 				monochromeShader.setUniformf("u_amount", 1.0f);
-				arrowDownBtn.setVisible(false);
+				//arrowDownBtn.setVisible(false);
 				arrowUpBtn.setVisible(false);
 				arrowLeftBtn.setVisible(false);
 				arrowRightBtn.setVisible(false);
@@ -407,7 +419,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 		arrowLeftBtn = null;
 		arrowRightBtn = null;
 		arrowUpBtn = null;
-		arrowDownBtn = null;
+		//arrowDownBtn = null;
 		scoreFontLabel = null;
 		isLeft = false;
 		isRight = false;
@@ -432,7 +444,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 	@Override
 	public void onTryAgain() {
 		scoreFontLabel.setText("0");
-		arrowDownBtn.setVisible(true);
+		//arrowDownBtn.setVisible(true);
 		arrowUpBtn.setVisible(true);
 		arrowLeftBtn.setVisible(true);
 		arrowRightBtn.setVisible(true);

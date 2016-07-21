@@ -201,6 +201,7 @@ public class Level {
 	
 	public Tile[][] getLevel() {
 		int index = MathUtils.random(0, levels.size - 1);
+		index = 0;
 		return this.levels.get(index);
 	}
 
