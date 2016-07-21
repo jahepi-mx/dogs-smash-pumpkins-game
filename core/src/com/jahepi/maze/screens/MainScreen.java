@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.jahepi.maze.Maze;
 import com.jahepi.maze.resources.Resource;
@@ -104,7 +105,7 @@ public class MainScreen implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				maze.changeToRankingScreen();
 			}
-			
+
 		});
 
 		exiBtn = new Label("Exit", style2);
@@ -129,7 +130,8 @@ public class MainScreen implements Screen {
 		creditsLabel.setFontScale(1.2f);
 		creditsLabel.setColor(Color.GOLD);
 		creditsLabel.scaleBy(1.2f);
-		creditsLabel.setPosition(Constant.UI_WIDTH / 2 - (creditsLabel.getWidth() * creditsLabel.getFontScaleX() / 2), 10);
+		creditsLabel.setAlignment(Align.center);
+		creditsLabel.setPosition(Constant.UI_WIDTH / 2 - (creditsLabel.getWidth() / 2), 10);
 		creditsLabel.setOriginX(creditsLabel.getWidth() / 2);
 		creditsLabel.setOriginY(creditsLabel.getHeight() / 2);
 		this.stage.addActor(creditsLabel);
@@ -167,7 +169,7 @@ public class MainScreen implements Screen {
 		
 		maze.getBatch().begin();
 		maze.getBatch().draw(backgroundRegion, (stage.getWidth() / 2) - (Constant.UI_WIDTH / 2), (stage.getHeight() / 2) - (Constant.UI_HEIGHT / 2), Constant.UI_WIDTH / 2, Constant.UI_HEIGHT / 2, Constant.UI_WIDTH, Constant.UI_HEIGHT, 1 + scaleFrom.x, 1 + scaleFrom.x, 270.0f, false);
-		glyphLayout.setText(gameTitle, "PUMPKIN DOG KILLER");
+		glyphLayout.setText(gameTitle, "DOGS SMASH PUMPKINS");
 		gameTitle.draw(maze.getBatch(), glyphLayout, (stage.getWidth() / 2) - (glyphLayout.width / 2), (stage.getHeight() / 2) + (glyphLayout.height * 3));
 		maze.getBatch().end();
 		stage.act(delta);

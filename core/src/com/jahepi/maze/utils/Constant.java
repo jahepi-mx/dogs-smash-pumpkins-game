@@ -24,7 +24,7 @@ public final class Constant {
 	public static final String ADMOB_KEY = "ca-app-pub-3227769552322799/6244007069";
 	public static final String ADMOB_INTERSTITIAL_KEY = "ca-app-pub-3227769552322799/1942964667";
 	public static final String ADMOB_TEST_ADS_KEY = "BC84CA4C15C9118A28E366B66AB2EAEC";
-	public static final boolean SHOW_FPS = true;
+	public static final boolean SHOW_FPS = false;
 	public static final boolean ENABLE_ADDS = true;
 	public static final boolean ENABLE_TEST_ADDS = true;
 	
