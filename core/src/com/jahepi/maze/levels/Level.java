@@ -129,15 +129,15 @@ public class Level {
 	private Tile none = new None("sand5", false);
 	
 	private Tile[][] level1 = {
-		{sand4,  sand10, sand10, sand10, sand10, sand10,     sand10,  sand10,     sand4Flip},
-		{sand4,  empty,  empty,  empty,  empty,  empty,      empty,   empty,      sand4Flip},
-		{sand4,  empty,  empty,  empty,  empty,  empty,      empty,   empty,      door2},
-		{sand4,  empty,  empty,  sand7,  sand8,  sand7Flip,  empty,   sand7,      sand4Flip},
-		{sand4,  empty,  empty,  crate,  empty,  empty,      empty,   empty,      sand4Flip},
-		{sand4,  empty,  empty,  empty,  empty,  empty,      empty,   mushroom,   sand4Flip},
-		{door1,  hero,   empty,  slope,  sand5,  slopeFlip,  empty,   empty,      sand4Flip},
-		{sand4,  sand3,  sand2,  sand2,  sand2,  sand2,      sand2,   sand3Flip,  sand4Flip},
-		{sand9,  sand10, sand10, sand10, sand10, sand10,     sand10,  sand10,     sand9Flip}
+		{sand4,  sand10, sand10, sand10, sand10,   sand10,     sand10,  sand10,     sand4Flip},
+		{sand4,  empty,  empty,  empty,  empty,    empty,      empty,   empty,      sand4Flip},
+		{sand4,  empty,  empty,  empty,  empty,    empty,      empty,   empty,      door2},
+		{sand4,  empty,  empty,  sand7,  sand8,    sand7Flip,  empty,   sand7,      sand4Flip},
+		{sand4,  empty,  empty,  crate,  empty,    empty,      empty,   empty,      sand4Flip},
+		{sand4,  empty,  empty,  empty,  mushroom, empty,      empty,   empty,      sand4Flip},
+		{door1,  hero,   empty,  slope,  sand5,    slopeFlip,  empty,   empty,      sand4Flip},
+		{sand4,  sand3,  sand2,  sand2,  sand2,    sand2,      sand2,   sand3Flip,  sand4Flip},
+		{sand9,  sand10, sand10, sand10, sand10,   sand10,     sand10,  sand10,     sand9Flip}
 	};
 	
 	private Tile[][] level2 = {
@@ -201,7 +201,6 @@ public class Level {
 	
 	public Tile[][] getLevel() {
 		int index = MathUtils.random(0, levels.size - 1);
-		index = 0;
 		return this.levels.get(index);
 	}
 

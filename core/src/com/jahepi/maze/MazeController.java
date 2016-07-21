@@ -315,7 +315,8 @@ public class MazeController implements Disposable, ContactListener {
 		if (fixtureA.getUserData() instanceof Enemy.LeftSideEnemy) {
 			Enemy enemy = (Enemy) fixtureA.getBody().getUserData();
 			if (!checkCrateCollision(enemy, fixtureB)) {
-				if (fixtureB.getBody().getUserData() instanceof Door == false) {
+				if ((fixtureB.getBody().getUserData() instanceof Door == false) &&
+						(fixtureB.getBody().getUserData() instanceof GravityItem == false)) {
 					enemy.changeDirection();
 				}
 			}
@@ -323,7 +324,8 @@ public class MazeController implements Disposable, ContactListener {
 		if (fixtureA.getUserData() instanceof Enemy.RightSideEnemy) {
 			Enemy enemy = (Enemy) fixtureA.getBody().getUserData();
 			if (!checkCrateCollision(enemy, fixtureB)) {
-				if (fixtureB.getBody().getUserData() instanceof Door == false) {
+				if ((fixtureB.getBody().getUserData() instanceof Door == false) &&
+						(fixtureB.getBody().getUserData() instanceof GravityItem == false)) {
 					enemy.changeDirection();
 				}
 			}
@@ -332,7 +334,8 @@ public class MazeController implements Disposable, ContactListener {
 		if (fixtureB.getUserData() instanceof Enemy.LeftSideEnemy) {
 			Enemy enemy = (Enemy) fixtureB.getBody().getUserData();
 			if (!checkCrateCollision(enemy, fixtureA)) {
-				if (fixtureA.getBody().getUserData() instanceof Door == false) {
+				if ((fixtureA.getBody().getUserData() instanceof Door == false) &&
+						((fixtureA.getBody().getUserData() instanceof GravityItem == false))) {
 					enemy.changeDirection();
 				}
 			}
@@ -340,7 +343,8 @@ public class MazeController implements Disposable, ContactListener {
 		if (fixtureB.getUserData() instanceof Enemy.RightSideEnemy) {
 			Enemy enemy = (Enemy) fixtureB.getBody().getUserData();
 			if (!checkCrateCollision(enemy, fixtureA)) {
-				if (fixtureA.getBody().getUserData() instanceof Door == false) {
+				if ((fixtureA.getBody().getUserData() instanceof Door == false) &&
+						(fixtureA.getBody().getUserData() instanceof GravityItem == false)) {
 					enemy.changeDirection();
 				}
 			}
