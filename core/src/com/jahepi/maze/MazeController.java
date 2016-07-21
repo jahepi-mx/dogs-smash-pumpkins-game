@@ -315,26 +315,34 @@ public class MazeController implements Disposable, ContactListener {
 		if (fixtureA.getUserData() instanceof Enemy.LeftSideEnemy) {
 			Enemy enemy = (Enemy) fixtureA.getBody().getUserData();
 			if (!checkCrateCollision(enemy, fixtureB)) {
-				enemy.changeDirection();
+				if (fixtureB.getBody().getUserData() instanceof Door == false) {
+					enemy.changeDirection();
+				}
 			}
 		}
 		if (fixtureA.getUserData() instanceof Enemy.RightSideEnemy) {
 			Enemy enemy = (Enemy) fixtureA.getBody().getUserData();
 			if (!checkCrateCollision(enemy, fixtureB)) {
-				enemy.changeDirection();
+				if (fixtureB.getBody().getUserData() instanceof Door == false) {
+					enemy.changeDirection();
+				}
 			}
 		}
 		
 		if (fixtureB.getUserData() instanceof Enemy.LeftSideEnemy) {
 			Enemy enemy = (Enemy) fixtureB.getBody().getUserData();
 			if (!checkCrateCollision(enemy, fixtureA)) {
-				enemy.changeDirection();
+				if (fixtureA.getBody().getUserData() instanceof Door == false) {
+					enemy.changeDirection();
+				}
 			}
 		}
 		if (fixtureB.getUserData() instanceof Enemy.RightSideEnemy) {
 			Enemy enemy = (Enemy) fixtureB.getBody().getUserData();
 			if (!checkCrateCollision(enemy, fixtureA)) {
-				enemy.changeDirection();
+				if (fixtureA.getBody().getUserData() instanceof Door == false) {
+					enemy.changeDirection();
+				}
 			}
 		}
 		
@@ -396,7 +404,7 @@ public class MazeController implements Disposable, ContactListener {
 			if (fixtureB.getBody().getUserData() instanceof Enemy) {
 				Enemy enemy = (Enemy) fixtureB.getBody().getUserData();
 				enemy.moveTo(to);
-				enemy.changeDirection();
+				//enemy.changeDirection();
 			}
 		}
 		
@@ -409,7 +417,7 @@ public class MazeController implements Disposable, ContactListener {
 			if (fixtureA.getBody().getUserData() instanceof Enemy) {
 				Enemy enemy = (Enemy) fixtureA.getBody().getUserData();
 				enemy.moveTo(to);
-				enemy.changeDirection();
+				//enemy.changeDirection();
 			}
 		}
 	}
