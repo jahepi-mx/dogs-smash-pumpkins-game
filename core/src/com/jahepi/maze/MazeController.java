@@ -298,7 +298,7 @@ public class MazeController implements Disposable, ContactListener {
 					score++;
 					this.listener.onPoint();
 					hero.resetImmunityTime();
-					hero.setJumpFlag(true);
+					hero.setJumpEnemyFlag(true);
 				}
 			}
 			if (fixtureB.getBody().getUserData() instanceof Enemy) {
@@ -307,7 +307,7 @@ public class MazeController implements Disposable, ContactListener {
 					score++;
 					this.listener.onPoint();
 					hero.resetImmunityTime();
-					hero.setJumpFlag(true);
+					hero.setJumpEnemyFlag(true);
 				}
 			}
 		}

@@ -365,7 +365,7 @@ public class MazeRender implements Disposable, EventListener, FinishUIListener, 
 			this.controller.debug(camera.combined);
 			batch.end();
 		}
-		System.out.println("Heap: " + (Gdx.app.getJavaHeap() / 1048576f));
+		//System.out.println("Heap: " + (Gdx.app.getJavaHeap() / 1048576f));
 		renderGui(deltatime);
 	}
 	

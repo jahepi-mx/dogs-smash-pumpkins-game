@@ -129,15 +129,15 @@ public class Level {
 	private Tile none = new None("sand5", false);
 	
 	private Tile[][] level1 = {
-		{sand4,  sand10, sand10, sand10, sand10,   sand10,     sand10,  sand10,     sand4Flip},
-		{sand4,  empty,  empty,  empty,  empty,    empty,      empty,   empty,      sand4Flip},
-		{sand4,  empty,  empty,  empty,  empty,    empty,      empty,   empty,      door2},
-		{sand4,  empty,  empty,  sand7,  sand8,    sand7Flip,  empty,   sand7,      sand4Flip},
-		{sand4,  empty,  empty,  crate,  empty,    empty,      empty,   empty,      sand4Flip},
-		{sand4,  empty,  empty,  empty,  mushroom, empty,      empty,   empty,      sand4Flip},
-		{door1,  hero,   empty,  slope,  sand5,    slopeFlip,  empty,   empty,      sand4Flip},
-		{sand4,  sand3,  sand2,  sand2,  sand2,    sand2,      sand2,   sand3Flip,  sand4Flip},
-		{sand9,  sand10, sand10, sand10, sand10,   sand10,     sand10,  sand10,     sand9Flip}
+		{sand4,  sand10, sand10, sand10, sand10,      sand10,     sand10,  sand10,     sand4Flip},
+		{sand4,  empty,  empty,  empty,  empty,       empty,      empty,   empty,      sand4Flip},
+		{sand4,  empty,  empty,  empty,  empty,       empty,      empty,   empty,      door2},
+		{sand4,  empty,  empty,  sand7,  sand8,       sand7Flip,  empty,   sand7,      sand4Flip},
+		{sand4,  empty,  empty,  empty,  empty,       empty,      empty,   empty,      sand4Flip},
+		{sand4,  empty,  crate,  empty,  mushroom,    empty,      crate,   empty,      sand4Flip},
+		{door1,  hero,   empty,  empty,  staticCrate, empty,      empty,   empty,      sand4Flip},
+		{sand4,  sand3,  sand2,  sand2,  sand2,       sand2,      sand2,   sand3Flip,  sand4Flip},
+		{sand9,  sand10, sand10, sand10, sand10,      sand10,     sand10,  sand10,     sand9Flip}
 	};
 	
 	private Tile[][] level2 = {
@@ -169,25 +169,25 @@ public class Level {
 			{sand4,  empty,      empty,      empty,      empty,        empty,      empty,         empty,    	  empty,         empty,       	empty, 		 empty,  empty,  empty,  empty, 		empty,        empty, 		sand4Flip},
 			{sand4,  empty,      empty,      empty,      empty,        empty,      empty,         empty,    	  empty,         empty,       	empty, 		 empty,  empty,  empty,  empty, 		empty,        empty, 		sand4Flip},
 			{sand4,  empty,      empty,      empty,      empty,        empty,      empty,         empty,    	  empty,         empty,       	empty, 		 empty,  empty,  empty,  empty, 		empty,        empty, 		sand4Flip},
-			{sand4,  empty,      empty,      empty,      empty,        empty,      mushroom,      empty,    	  empty,         empty,  	    empty,       empty,  empty,  empty,  empty,  	    empty,        empty, 		sand4Flip},
-			{sand4,  empty,      empty,      hero,       empty,        empty,      empty,         empty,    	  empty,         empty,       	staticCrate, empty,  empty,  empty,  empty,  		empty,        empty, 		sand4Flip},
-			{sand4,  empty,      empty,      empty,      empty,        empty,      empty,         empty,    	  empty,         staticCrate,   sand5,       empty,  crate,  empty,  empty, 		empty,  	  empty, 		sand4Flip},
+			{sand4,  empty,      empty,      empty,      empty,        empty,      empty,         empty,    	  empty,         empty,  	    empty,       empty,  empty,  empty,  empty,  	    empty,        empty, 		sand4Flip},
+			{sand4,  empty,      empty,      hero,       empty,        empty,      empty,         mushroom,    	  empty,         empty,       	staticCrate, empty,  empty,  empty,  empty,  		empty,        empty, 		sand4Flip},
+			{sand4,  empty,      empty,      empty,      empty,        empty,      empty,         empty,    	  empty,         staticCrate,   sand5,       empty,  crate,  empty,  empty, 		crate,  	  empty, 		sand4Flip},
 			{sand4,  empty,      empty,      sand7,      sand8,        sand7Flip,  empty,         empty,          staticCrate,   sand5, 	    sand5,       empty,  empty,  empty,  empty,  		empty,  	  empty, 	    sand4Flip},
-			{door5,  empty,      empty,      empty,      empty,  	   empty,      empty,         staticCrate,    sand5,         sand5, 	    sand5,       empty,  empty,  slope,  sand5,         slopeFlip,    empty, 	    door2},
+			{door5,  empty,      empty,      empty,      empty,  	   empty,      empty,         staticCrate,    sand5,         sand5, 	    sand5,       empty,  empty,  empty,  staticCrate,   empty,    	  empty, 	    door2},
 			{sand4,  sand3,      sand2,      sand2,      sand2,  	   sand2,      sand2,         sand2,    	  sand2,         sand2,   		sand2, 	   	 sand2,  sand2,  sand2,  sand2, 		sand2,  	  sand3Flip, 	sand4Flip},
 			{sand9,  sand10,     sand10,     sand10,     sand10,       sand10,     sand10,        sand10,   	  sand10,        sand10,      	sand10,      sand10, sand10, sand10, sand10,		sand10, 	  sand10, 	    sand9Flip}
 	};
 
 	private Tile[][] level5 = {
-			{sand4,  sand10, sand10,     sand10,       sand10,     sand10,        sand10,         sand10,        sand10,      	sand10, 	 sand10,     	sand10,       sand10, 	    sand4Flip},
-			{sand4,  empty,  empty,      empty,        empty,      empty,         empty,    	  empty,         empty,       	empty, 		 empty, 		empty,        door2, 		sand4Flip},
-			{sand4,  empty,  empty,      empty,        empty,      empty,         empty,    	  empty,         empty,  	    empty,       sand7,  	    sand8,        sand7Flip, 	sand4Flip},
-			{sand4,  empty,  empty,      empty,        empty,      empty,         empty,    	  empty,         empty,         empty, 		 mushroom,  	empty,        empty, 		sand4Flip},
-			{sand4,  empty,  empty,      hero,         empty,      slope,         sand5,    	  slopeFlip,     empty,         empty, 		 empty,  		empty,  	  empty, 		sand4Flip},
-			{sand4,  empty,  empty,      crate,        slope,      sand5,         sand5,          sand5,         staticCrate, 	empty,       empty,  		empty,  	  slope, 	    sand4Flip},
-			{door6,  empty,  empty,      slope,  	   sand5,      sand5,         sand5,          sand5,         sand5, 	    slopeFlip,   crate,         slope,        sand5, 		sand4Flip},
-			{sand4,  sand3,  sand2,      sand2,  	   sand2,      sand2,         sand2,    	  sand2,         sand2,   		sand2, 	   	 sand2,  		sand2,  	  sand3Flip, 	sand4Flip},
-			{sand9,  sand10, sand10,     sand10,       sand10,     sand10,        sand10,   	  sand10,        sand10,      	sand10,      sand10, 		sand10, 	  sand10, 	    sand9Flip}
+			{sand4,  sand10, sand10,     sand10,       sand10,     sand10,        sand10,         sand10,        sand10,      	sand10, 	 sand10,     	sand10,       sand10, 	    empty,        empty,  empty,     sand4Flip},
+			{sand4,  empty,  empty,      empty,        empty,      empty,         empty,    	  empty,         empty,       	empty, 		 empty, 		empty,        door2, 		empty,        empty,  empty,     sand4Flip},
+			{sand4,  empty,  empty,      empty,        empty,      empty,         empty,    	  empty,         empty,  	    empty,       sand7,  	    sand8,        sand7Flip, 	empty,        empty,  empty,     sand4Flip},
+			{sand4,  empty,  empty,      empty,        empty,      empty,         empty,    	  empty,         empty,         empty, 		 empty,  	    empty,        empty, 		empty,        empty,  empty,     sand4Flip},
+			{sand4,  empty,  empty,      hero,         empty,      empty,         staticCrate,    empty,         empty,         empty, 		 empty,  		empty,  	  empty, 		empty,        empty,  empty,     sand4Flip},
+			{sand4,  empty,  empty,      crate,        empty,      staticCrate,   sand5,          staticCrate,   staticCrate, 	empty,       mushroom,  	empty,  	  staticCrate, 	empty,        crate,  empty,     sand4Flip},
+			{door6,  empty,  empty,      empty,  	   staticCrate,sand5,         sand5,          sand5,         sand5, 	    staticCrate, empty,         staticCrate,  staticCrate, 	staticCrate,  empty,  empty,     sand4Flip},
+			{sand4,  sand3,  sand2,      sand2,  	   sand2,      sand2,         sand2,    	  sand2,         sand2,   		sand2, 	   	 sand2,  		sand2,  	  sand2,		sand2,        sand2,  sand3Flip, sand4Flip},
+			{sand9,  sand10, sand10,     sand10,       sand10,     sand10,        sand10,   	  sand10,        sand10,      	sand10,      sand10, 		sand10, 	  sand10, 	    sand10,       sand10, sand10,    sand9Flip}
 	};
 
 	public Level() {

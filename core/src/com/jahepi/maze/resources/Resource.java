@@ -121,6 +121,8 @@ public class Resource implements Disposable {
 	    FreeTypeFontParameter parameters5 = new FreeTypeFontParameter();
 	    parameters5.size = 120;
 	    parameters5.color = Color.GREEN;
+		parameters5.shadowOffsetX = 2;
+		parameters5.shadowOffsetY = 2;
 	    fpsFont = fontGenerator.generateFont(parameters5);
 	    
 	    FreeTypeFontParameter parameters6 = new FreeTypeFontParameter();

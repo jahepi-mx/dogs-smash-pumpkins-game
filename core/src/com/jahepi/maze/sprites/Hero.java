@@ -1,5 +1,6 @@
 package com.jahepi.maze.sprites;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -25,7 +26,7 @@ public class Hero extends WorldObject {
 	private Vector2 direction;
 	private float velocityX;
 	private float velocityY;
-	private boolean isJumping, jumpFlag;
+	private boolean isJumping, jumpEnemyFlag;
 	private Animation runAnimation;
 	private Animation jumpAnimation;
 	private Animation idleAnimation;
@@ -99,14 +100,18 @@ public class Hero extends WorldObject {
 	}
 	
 	public void update(float deltatime) {
+		//Gdx.app.log("LINEAR", "" + body.getLinearVelocity().y);
+
+		if (body.getLinearVelocity().y == 0) {
+			isJumping = false;
+		}
+
 		if (checkMoveTo() || isDead) {
 			return;
 		}
 
-		if (jumpFlag) {
-			jumpFlag = false;
-			jump();
-		}
+		jumpOnHeadEnemyHit();
+
 
 		direction.x *= friction;
 		float x = body.getPosition().x + (direction.x * deltatime);
@@ -127,13 +132,20 @@ public class Hero extends WorldObject {
 	}
 	
 	public void jump() {
-		if (checkMoveTo() || isDead) {
+		if (checkMoveTo() || isDead || body.getLinearVelocity().y > 0.5f) {
 			return;
 		}
 		if (!isJumping()) {
 			isJumping = true;
 			this.resource.getJumpSound().play();
 			body.applyLinearImpulse(new Vector2(0.0f, JUMP), body.getPosition(), true);
+		}
+	}
+
+	private void jumpOnHeadEnemyHit() {
+		if (jumpEnemyFlag) {
+			body.applyLinearImpulse(new Vector2(0.0f, 50.0f), body.getPosition(), true);
+			jumpEnemyFlag = false;
 		}
 	}
 
@@ -254,11 +266,7 @@ public class Hero extends WorldObject {
 		
 	}
 
-	public boolean isJumpFlag() {
-		return jumpFlag;
-	}
-
-	public void setJumpFlag(boolean jumpFlag) {
-		this.jumpFlag = jumpFlag;
+	public void setJumpEnemyFlag(boolean jumpEnemyFlag) {
+		this.jumpEnemyFlag = jumpEnemyFlag;
 	}
 }
