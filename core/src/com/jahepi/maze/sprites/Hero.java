@@ -102,10 +102,6 @@ public class Hero extends WorldObject {
 	public void update(float deltatime) {
 		//Gdx.app.log("LINEAR", "" + body.getLinearVelocity().y);
 
-		if (body.getLinearVelocity().y == 0) {
-			isJumping = false;
-		}
-
 		if (checkMoveTo() || isDead) {
 			return;
 		}
