@@ -32,6 +32,7 @@ public class MainScreen implements Screen {
 	private Label rankingBtn;
 	private Label exiBtn;
 	private Label creditsLabel;
+	private Label policyBtn;
 	private Stage stage;
 	private TextureRegion backgroundRegion;
 	private Vector2 scaleFrom;
@@ -108,11 +109,29 @@ public class MainScreen implements Screen {
 
 		});
 
+		policyBtn = new Label("Privacy Policy", style2);
+		policyBtn.setFontScale(2.0f);
+		policyBtn.setColor(Color.WHITE);
+		policyBtn.scaleBy(2.0f);
+		policyBtn.setPosition(Constant.UI_WIDTH / 2 - (policyBtn.getWidth() * policyBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (policyBtn.getHeight() * policyBtn.getFontScaleY() * 3.4f));
+		policyBtn.setOriginX(policyBtn.getWidth() / 2);
+		policyBtn.setOriginY(policyBtn.getHeight() / 2);
+		this.stage.addActor(policyBtn);
+
+		policyBtn.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.net.openURI("https://space.jahepi.net/privacy_policy_dsp.html");
+			}
+
+		});
+
 		exiBtn = new Label("Exit", style2);
 		exiBtn.setFontScale(2.0f);
 		exiBtn.setColor(Color.WHITE);
 		exiBtn.scaleBy(2.0f);
-		exiBtn.setPosition(Constant.UI_WIDTH / 2 - (exiBtn.getWidth() * exiBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (exiBtn.getHeight() * exiBtn.getFontScaleY() * 3.4f));
+		exiBtn.setPosition(Constant.UI_WIDTH / 2 - (exiBtn.getWidth() * exiBtn.getFontScaleX() / 2), Constant.UI_HEIGHT / 2 - (exiBtn.getHeight() * exiBtn.getFontScaleY() * 4.8f));
 		exiBtn.setOriginX(exiBtn.getWidth() / 2);
 		exiBtn.setOriginY(exiBtn.getHeight() / 2);
 		this.stage.addActor(exiBtn);

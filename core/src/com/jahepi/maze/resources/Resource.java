@@ -98,7 +98,7 @@ public class Resource implements Disposable {
 	    gameTitleFont = fontGenerator.generateFont(parameters);
 	    
 	    FreeTypeFontParameter parameters2 = new FreeTypeFontParameter();
-	    parameters2.size = 60;
+	    parameters2.size = 40;
 	    parameters2.shadowOffsetX = 1;
 	    parameters2.shadowOffsetY = 1;
 	    parameters2.color = Color.WHITE;
