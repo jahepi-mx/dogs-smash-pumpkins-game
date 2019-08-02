@@ -1,4 +1,4 @@
-# Pumpkin Dog Killer
+# Dogs Smash Pumpkins
 
 Dogs Smash Pumpkins is a 2D Platform Game made in LibGDX.
 
